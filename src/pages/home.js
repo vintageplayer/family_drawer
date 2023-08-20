@@ -4,12 +4,12 @@ import {
   Tab,
   TabList,
   TabGroup,
-  TabPanels,
+  TabPanels
 } from "@tremor/react";
 
 import TabPanelTable from '../components/tabPanelTable';
 
-export default function DashboardExample() {
+export default function Home() {
   const panelTabDataList = [
       {
         'key': 'assets',
