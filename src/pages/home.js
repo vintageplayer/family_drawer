@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Card,
   Title,
@@ -13,7 +11,7 @@ import {
 } from "@tremor/react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 
-import DynamicTable from './table';
+import DynamicTable from '../components/table';
 
 function TabPanelTable({panelData}) {
   return (
@@ -171,22 +169,27 @@ export default function DashboardExample() {
           ],
           'rows': [
             {
+              'id': 1,
               'parameter_title': 'Trustee Trigger Threshold',
               'parameter_value': 2
             },
             {
+              id: 2,
               'parameter_title': 'Beneficiary Trigger Threshold',
               'parameter_value': 3,
             },
             {
+              id: 3,
               'parameter_title': 'Digital Communication Attempt Period',
               'parameter_value': '30 days',
             },
             {
+              id: 4,
               'parameter_title': 'Phone Communication Attempt Period',
               'parameter_value': '15 days',
             },
             {
+              id: 5,
               'parameter_title': 'Total Days Before Reveal',
               'parameter_value': '45 days',
             }
@@ -213,6 +216,7 @@ export default function DashboardExample() {
           {panelTabDataList.map((panelData) => (
             <TabPanelTable
               panelData={panelData}
+              key={panelData.key}
             />
           ))}
         </TabPanels>

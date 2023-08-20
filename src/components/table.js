@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Table,
   TableHead,
@@ -14,18 +12,18 @@ export default function DynamicTable({records}) {
   return (
     <Table>
       <TableHead>
-        <TableRow>
+        <TableRow key='header'>
           {records['headers'].map((headerObject) => (
-            <TableHeaderCell>{headerObject.displayText}</TableHeaderCell>
+            <TableHeaderCell key={headerObject.keyText}>{headerObject.displayText}</TableHeaderCell>
           ))}
           <TableHeaderCell></TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {records['rows'].map((record) => (        
-          <TableRow key={record.id}>
-            {records['headers'].map((headerObject) => (
-              <TableCell>{record[headerObject.keyText]}</TableCell>
+        {records['rows'].map((record) => (
+          <TableRow key={record.id} id={record.id}>
+            {records['headers'].map((headerObject, index) => (
+              <TableCell key={`${headerObject.keyText}-${index}`}>{record[headerObject.keyText]}</TableCell>
             ))}
             <TableCell><Button size="xs">Edit</Button></TableCell>
           </TableRow>
