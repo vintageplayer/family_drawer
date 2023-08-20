@@ -1,36 +1,15 @@
 import {
-  Card,
   Title,
   Text,
   Tab,
   TabList,
   TabGroup,
-  TabPanel,
   TabPanels,
-  Button
 } from "@tremor/react";
-import { PlusIcon } from "@heroicons/react/24/solid";
 
-import DynamicTable from '../components/table';
-
-function TabPanelTable({panelData}) {
-  return (
-      <TabPanel>
-        <Text>
-          {panelData.title}
-        { panelData.key != 'reveal' &&
-          <Button style={{float: 'right', marginRight: 5 + 'px'}} size="xs" icon={PlusIcon}>Add</Button>
-        }        
-        </Text>
-        <Card className="mt-6">
-          <DynamicTable records={panelData.data} />
-        </Card>
-      </TabPanel>
-    )
-}
+import TabPanelTable from '../components/tabPanelTable';
 
 export default function DashboardExample() {
-  const assetPanelTitle = "Manage all the physical/digital assets you want your loved ones to access. We recommend sharing steps on accessing the assets, rather than the exact user/password information.";
   const panelTabDataList = [
       {
         'key': 'assets',
