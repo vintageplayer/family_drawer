@@ -140,11 +140,9 @@ export default function Home() {
 
   return (
     <main className="px-12 py-12">
-      <Title>Family Drawer</Title>
+      <Title>NOTE: Under development. Please don't use with actual data yet!</Title>
       <Text>Conveniently transfer details of any physical or digital asset your loved ones would need.</Text>
       <br />
-      <Title>NOTE: Under development. Please don't use with actual data yet!</Title>
-
       <TabGroup className="mt-6">
         <TabList>
           <Tab>Assets</Tab>
