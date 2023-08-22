@@ -8,7 +8,7 @@ import {
   Button
 } from '@tremor/react';
 
-export default function DynamicTable({records}) {
+export default function DynamicTable({records, showDelete=true}) {
   return (
     <Table>
       <TableHead>
@@ -25,7 +25,12 @@ export default function DynamicTable({records}) {
             {records['headers'].map((headerObject, index) => (
               <TableCell key={`${headerObject.keyText}-${index}`}>{record[headerObject.keyText]}</TableCell>
             ))}
-            <TableCell><Button size="xs">Edit</Button></TableCell>
+            <TableCell>
+              <Button size="xs">Edit</Button>&nbsp;
+              { showDelete &&                 
+                <Button size="xs" variant="secondary">Delete</Button>
+              }
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

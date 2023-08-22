@@ -7,7 +7,7 @@ import {
   TabPanels
 } from "@tremor/react";
 
-import TabPanelTable from '../components/tabPanelTable';
+import TabPanelData from '../components/tabPanelData';
 
 export default function Home() {
   const panelTabDataList = [
@@ -193,7 +193,7 @@ export default function Home() {
         </TabList>
         <TabPanels>
           {panelTabDataList.map((panelData) => (
-            <TabPanelTable
+            <TabPanelData
               panelData={panelData}
               key={panelData.key}
             />

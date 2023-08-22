@@ -6,8 +6,18 @@ import {
 } from "@tremor/react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import DynamicTable from './table';
+import TabPanelForm from './tabPanelForm'
 
-export default function TabPanelTable({panelData}) {
+export default function TabPanelData({panelData}) {
+  return (
+    <>
+      <TabPanelTable panelData={panelData} />
+      <TabPanelForm panelData={panelData} />
+    </>
+  )
+}
+
+function TabPanelTable({panelData}) {
   return (
       <TabPanel>
         <Text>
@@ -17,7 +27,7 @@ export default function TabPanelTable({panelData}) {
         }        
         </Text>
         <Card className="mt-6">
-          <DynamicTable records={panelData.data} />
+          <DynamicTable records={panelData.data} showDelete={panelData.key != 'reveal'}/>
         </Card>
       </TabPanel>
     )
