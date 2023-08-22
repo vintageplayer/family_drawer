@@ -1,50 +1,17 @@
-import { useState } from "react";
 import {
 	TextInput,
-	Select,
-	SelectItem,
 	Card,
 	TabPanel,
-	MultiSelect,
-	MultiSelectItem,
 	Button,
 	Flex
 } from "@tremor/react";
 
-import { PlusIcon, BanknotesIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import {
+  MultiSelectControlled,
+  SelectControlled
+} from '../formComponents';
 
-function MultiSelectControlled({itemsList}) {
-  const [value, setValue] = useState([]);
-  return (
-    <>
-      <MultiSelect onValueChange={setValue} placeholder="Select Beneficiaries">
-      {itemsList.map((item) => (
-        <MultiSelectItem key={item.value} value={item.value} icon={UserCircleIcon}>
-          {item.displayText}
-        </MultiSelectItem>
-      ))}
-      </MultiSelect>
-    </>
-  )
-}
-
-function SelectControlled({itemsList}) {
-  const [value, setValue] = useState("");
-
-  return (
-    <>
-      <Select value={value} onValueChange={setValue} placeholder="Select Category">
-      {itemsList.map((item) => (
-        <SelectItem key={item.value} value={item.value} icon={BanknotesIcon}>
-          {item.displayText}
-        </SelectItem>        
-      ))}
-      </Select>
-    </>
-  )
-}
-
-export default function TabPanelForm({panelData, showFrom}) {
+export default function AssetForm ({panelData, showFrom}) {
   const categoryList = [
     {
       'value': '1',
@@ -92,7 +59,7 @@ export default function TabPanelForm({panelData, showFrom}) {
         <Card className="mt-6">
         	<div className="space-y-6">
         		{`Asset Category:`} <br />
-        		<SelectControlled itemsList={categoryList} />
+        		<SelectControlled itemsList={categoryList} placeholder="Category" />
         		<br />
         		{`Asset Name:`}
         		<TextInput placeholder="Asset Name" />
@@ -101,10 +68,10 @@ export default function TabPanelForm({panelData, showFrom}) {
         		<TextInput placeholder="Description" />
         		<br />
         		{`Beneficiaries:`}
-        		<MultiSelectControlled itemsList={beneficiaryList} />
+        		<MultiSelectControlled itemsList={beneficiaryList} placeholder="Beneficiaries" />
         		<br />
         		{`Trustees:`}        		
-        		<MultiSelectControlled itemsList={trusteeList} />
+        		<MultiSelectControlled itemsList={trusteeList} placeholder="Trustees" />
 			      <Flex justifyContent="end" className="space-x-2 border-t pt-4 mt-8">
 			        <Button
                 size="xs"

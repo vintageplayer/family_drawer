@@ -6,17 +6,22 @@ import {
 } from "@tremor/react";
 import { PlusIcon } from "@heroicons/react/24/solid";
 import DynamicTable from './table';
-import TabPanelForm from './tabPanelForm'
+
+// import TabPanelForm from './tabPanelForm'
+
+import AssetForm from './PanelForm/AssetForm';
+import PersonForm from './PanelForm/PersonForm';
 
 import {useState} from 'react';
 
 export default function TabPanelData({panelData}) {
   const [showForm, setShowForm] = useState(false);
-
   return (
     <>      
       { !showForm && <TabPanelTable panelData={panelData} addHandler={setShowForm} />}
-      { showForm && <TabPanelForm panelData={panelData} showFrom={setShowForm} />}
+      { showForm && panelData.key == 'assets' && <AssetForm panelData={panelData} showFrom={setShowForm} />}
+      { showForm && panelData.key == 'beneficiaries' && <PersonForm panelData={panelData} showFrom={setShowForm} />}
+      { showForm && panelData.key == 'trustees' && <PersonForm panelData={panelData} showFrom={setShowForm} />}
     </>
   )
 }
