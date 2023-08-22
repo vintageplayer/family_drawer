@@ -18,19 +18,22 @@ export default function Home() {
           'headers': [
             {
               'displayText': 'Category',
-              'keyText': 'category'
+              'keyText': 'category'              
             },
             {
               'displayText': 'Name',
-              'keyText': 'name'
+              'keyText': 'name',
+              'inputType': 'TextInput'
             },
             {
               'displayText': 'Beneficiaries',
-              'keyText': 'beneficiaries'
+              'keyText': 'beneficiaries',
+              'inputType': 'TextInput'
             },
             {
               'displayText': 'Trustees',
-              'keyText': 'trustees'
+              'keyText': 'trustees',
+              'inputType': 'TextInput'
             },
             {
               'displayText': 'Last Updated',

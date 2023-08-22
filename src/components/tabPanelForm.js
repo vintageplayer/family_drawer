@@ -13,67 +13,86 @@ import {
 
 import { PlusIcon, BanknotesIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
-function MultiSelectControlled() {
-  const [value, setValue] = useState("");
+function MultiSelectControlled({itemsList}) {
+  const [value, setValue] = useState([]);
   return (
     <>
       <MultiSelect onValueChange={setValue} placeholder="Select Beneficiaries">
-        <MultiSelectItem value="1" icon={UserCircleIcon}>
-          Rahul
+      {itemsList.map((item) => (
+        <MultiSelectItem key={item.value} value={item.value} icon={UserCircleIcon}>
+          {item.displayText}
         </MultiSelectItem>
-        <MultiSelectItem value="2" icon={UserCircleIcon}>
-          Amanda
-        </MultiSelectItem>
+      ))}
       </MultiSelect>
     </>
   )
 }
 
-function MultiSelectControlledTrustees() {
+function SelectControlled({itemsList}) {
   const [value, setValue] = useState("");
-  return (
-    <>
-      <MultiSelect onValueChange={setValue} placeholder="Select Trustees">
-        <MultiSelectItem value="1" icon={UserCircleIcon}>
-          Varun
-        </MultiSelectItem>
-      </MultiSelect>
-    </>
-  )
-}
 
-function SelectControlled() {
-  const [value, setValue] = useState("");
   return (
     <>
       <Select value={value} onValueChange={setValue} placeholder="Select Category">
-        <SelectItem value="1" icon={BanknotesIcon}>
-          Stocks
-        </SelectItem>
-        <SelectItem value="2" icon={BanknotesIcon}>
-          Bank Account
-        </SelectItem>
-        <SelectItem value="3" icon={BanknotesIcon}>
-          Land
-        </SelectItem>
-        <SelectItem value="4" icon={BanknotesIcon}>
-          Insurance
-        </SelectItem>
-        <SelectItem value="5" icon={BanknotesIcon}>
-          Heirloom/Artifact
-        </SelectItem>
+      {itemsList.map((item) => (
+        <SelectItem key={item.value} value={item.value} icon={BanknotesIcon}>
+          {item.displayText}
+        </SelectItem>        
+      ))}
       </Select>
     </>
   )
 }
 
 export default function TabPanelForm({panelData, showFrom}) {
+  const categoryList = [
+    {
+      'value': '1',
+      'displayText': 'Stocks'
+    },
+    {
+      'value': '2',
+      'displayText': 'Bank Account'
+    },
+    {
+      'value': '3',
+      'displayText': 'Land'
+    },
+    {
+      'value': '4',
+      'displayText': 'Insurance'
+    },
+    {
+      'value': '5',
+      'displayText': 'Heirloom/Artifact'
+    }
+  ];
+
+  const beneficiaryList = [
+    {
+      'value': '1',
+      'displayText': 'Rahul'
+    },
+    {
+      'value': '2',
+      'displayText': 'Amanda'
+    }
+  ];
+
+  const trusteeList = [
+    {
+      'value': '1',
+      'displayText': 'Varun'
+    }
+  ];
+
+
   return (
       <TabPanel>
         <Card className="mt-6">
         	<div className="space-y-6">
         		{`Asset Category:`} <br />
-        		<SelectControlled />
+        		<SelectControlled itemsList={categoryList} />
         		<br />
         		{`Asset Name:`}
         		<TextInput placeholder="Asset Name" />
@@ -82,10 +101,10 @@ export default function TabPanelForm({panelData, showFrom}) {
         		<TextInput placeholder="Description" />
         		<br />
         		{`Beneficiaries:`}
-        		<MultiSelectControlled />
+        		<MultiSelectControlled itemsList={beneficiaryList} />
         		<br />
         		{`Trustees:`}        		
-        		<MultiSelectControlledTrustees />
+        		<MultiSelectControlled itemsList={trusteeList} />
 			      <Flex justifyContent="end" className="space-x-2 border-t pt-4 mt-8">
 			        <Button
                 size="xs"
