@@ -67,7 +67,7 @@ function SelectControlled() {
   )
 }
 
-export default function TabPanelForm({panelData}) {
+export default function TabPanelForm({panelData, showFrom}) {
   return (
       <TabPanel>
         <Card className="mt-6">
@@ -87,11 +87,19 @@ export default function TabPanelForm({panelData}) {
         		{`Trustees:`}        		
         		<MultiSelectControlledTrustees />
 			      <Flex justifyContent="end" className="space-x-2 border-t pt-4 mt-8">
-			        <Button size="xs" variant="secondary">
+			        <Button
+                size="xs"
+                variant="secondary"
+                onClick={(e) => {showFrom(false);}}
+              >
 			          Cancel
 			        </Button>
 
-			        <Button size="xs" variant="primary">
+			        <Button
+                size="xs"
+                variant="primary"
+                onClick={(e) => {showFrom(false);}}
+              >
 			          Save
 			        </Button>
 			      </Flex>
